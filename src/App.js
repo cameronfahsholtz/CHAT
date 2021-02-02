@@ -1,9 +1,11 @@
 
-import {useState} from 'react'
+import {useState} from 'react';
 import './App.css';
-import TextInput from './TextInput'
+import TextInput from './TextInput';
+import Message from './Messages';
+
 function App() {
-  const [messages,setMessages] = useState([{text: 'hello'}])
+  const [messages,setMessages] = useState([])
 
   return <div className="App">
 
@@ -13,20 +15,13 @@ function App() {
     </header>
 
     <main className="messages">
-
-      {messages.map((m,i)=> {
-        return <div className="message-row">
-        <div className="message">
-          {m.text}
-        </div>
-      </div>
+        {messages.map((m,i)=> {
+        return <Message key={i} {...m} />
       })}
-
-
     </main>
 
     <TextInput
-      send={(t)=> setMessages([...messages, {text:t}])}
+      send={(t)=> setMessages([{text:t}, ...messages])}
     />
 
   </div>

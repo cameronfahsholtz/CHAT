@@ -1,16 +1,17 @@
+
 import {useState} from 'react'
+import { AiOutlineSend } from "react-icons/ai";
 
 function TextInput(props) {
   const [text, setText] = useState('')
 
-  function sendMessage() {
+  function sendMessage(){
     if(text==='') return // skip the function
     props.send(text)
     setText('')
   }
-
   function keyPressed(e){
-    if(e.key==="Enter") {
+    if(e.key==='Enter') {
       sendMessage()
     }
   }
@@ -19,11 +20,13 @@ function TextInput(props) {
     <input className="input"
       placeholder="Write your message"
       value={text}
-      onChange={e=> setText(e.target.vale)}
+      onChange={e=> setText(e.target.value)}
       onKeyPress={keyPressed}
     />
     <button onClick={sendMessage} disabled={!text} className="send-button">
-        &#8593;
+      <AiOutlineSend title="send"
+        style={{minWidth:'0.7rem',marginLeft:2}}
+      />
     </button>
   </footer>
 }
