@@ -1,6 +1,5 @@
 
 import {useState} from 'react'
-import { AiOutlineSend } from "react-icons/ai";
 
 function TextInput(props) {
   const [text, setText] = useState('')
@@ -24,9 +23,7 @@ function TextInput(props) {
       onKeyPress={keyPressed}
     />
     <button onClick={sendMessage} disabled={!text} className="send-button">
-      <AiOutlineSend title="send"
-        style={{minWidth:'0.7rem',marginLeft:2}}
-      />
+      &#8593;
     </button>
   </footer>
 }
